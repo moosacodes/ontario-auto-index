@@ -25,6 +25,25 @@ Independent dealers are included when their Ontario business and inventory
 source can be verified. Restricted, login-only, blocked, or legally uncertain
 sources remain visible as registry records but are not crawled.
 
+## Current discovery sources
+
+The current registry is being expanded from authoritative sources rather than
+search-result guesses:
+
+- [UCDA member dealer directory](https://ucda.ca/find-a-member-dealer/) — the
+  principal independent-dealer discovery source, reported by the directory as
+  covering thousands of Ontario members.
+- [OMVIC registrant search](https://omvic.powerappsportals.com/registrant-search/)
+  — regulatory verification source.
+- [Toyota Canada dealer network](https://www.shoptoyota.ca/ontario/en/dealers).
+- [Honda Canada dealer locator](https://www.honda.ca/dealer-locator).
+- [Ford Canada dealer locator](https://www.ford.ca/dealerships/).
+
+`data/discovery-candidates.json` contains the first manufacturer-locator seed
+batch. These records are deliberately `discovered`, not `inventory`: their
+websites, inventory endpoints, robots policies, and extraction feasibility must
+still be evaluated before collection.
+
 ## Discovery deliverable
 
 Phase 2 should commit registry metadata and evidence links, then demonstrate

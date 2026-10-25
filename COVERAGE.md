@@ -12,6 +12,7 @@ valid live snapshot:
 | Result | Count | Details |
 |---|---:|---|
 | Candidate dealership websites checked | 10 | Ottawa, Toronto, North York, Markham, and Hamilton |
+| Additional authoritative discovery candidates seeded | 13 | Toyota, Honda, and Ford locator sources; not yet crawl-verified |
 | Working adapters | 1 | Reusable Zop Software/Typesense adapter |
 | Supported dealership sources | 3 | Ottawa Auto Sales, Right Way Auto, Wayne's Auto World |
 | Live valid listings published | 39 | 9 + 6 + 24 records observed at run time |
@@ -30,6 +31,10 @@ and their original listing links.
 The other nine candidates are recorded in `data/dealers.json` with their
 status, platform evidence, endpoint result, and limitation. They are not
 claimed as supported. No scheduled crawling has been enabled.
+
+This is still not provincial coverage. The next discovery batch must import and
+evaluate the UCDA/OMVIC population systematically rather than treating the
+13 manufacturer-locator candidates as a complete list.
 
 Report at every release:
 
