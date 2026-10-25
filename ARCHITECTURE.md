@@ -26,6 +26,14 @@ one release.
 - **Adapters**: small platform/source-specific implementations behind a common
   interface. An adapter emits raw values and the original URL; it never invents
   missing values.
+
+Implemented adapter families include paginated Zop Software/Typesense,
+DealerCity/SM360 public inventory JSON, Schema.org JSON-LD with bounded detail
+traversal, and conservative server-rendered HTML/WordPress inventories.
+DealerCity records retain the platform's exact vehicle-detail URL, source price,
+odometer, VIN/specifications, dealership city, and inventory-CDN gallery.
+HTML extraction requires a plausible vehicle identity and prefers explicit
+product price metadata over unrelated prices elsewhere on the page.
 - **Normalizer**: converts source values into canonical types while preserving
   original extracted text.
 - **Validator**: rejects impossible values, missing provenance, invalid URLs,

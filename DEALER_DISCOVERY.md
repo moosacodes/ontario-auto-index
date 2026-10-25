@@ -68,3 +68,36 @@ Phase 2 should commit registry metadata and evidence links, then demonstrate
 real discovery output. It must report counts by status, platform, municipality,
 and freshness. It must not report “complete Ontario coverage” without a
 reproducible source inventory and gap analysis.
+
+## Automated province-wide seed
+
+[OpenStreetMap Ontario dealership geography](https://www.openstreetmap.org/copyright)
+is used as the automated province-wide seed layer under ODbL. Published uses
+retain “© OpenStreetMap contributors” attribution. The discovery command
+queries the complete Ontario area rather than a hand-picked municipality list.
+
+## Reproducible expansion run
+
+On 2026-10-25, `ontario-auto-index discover` examined 1,806 Ontario `shop=car`
+features. Of those, 416 supplied a website and domain deduplication produced a
+417-record registry including pre-existing records. Verification produced:
+
+- 282 `verified`, 4 existing `inventory`, 24 `unsupported`, 105 `broken`, and
+  2 `restricted` records across 65 municipalities;
+- 27 dealers successfully ingested through currently supported adapters;
+- 1,139 real vehicle records published from those 27 dealers, including 1,009
+  records with source-published photos;
+- 259 selected dealers failed ingestion, primarily because their AutoSync,
+  D2C Media, remaining HTML/JSON-LD, or unknown platforms still
+  need dedicated adapters.
+
+These are measured results, not coverage claims. The 500 verified-record goal
+and 100 successfully ingested-dealer goal are not yet complete. The
+1,000-listing milestone has been exceeded without generating synthetic records.
+
+```powershell
+ontario-auto-index --database data/registry.sqlite3 discover
+ontario-auto-index --database data/registry.sqlite3 verify --status discovered --concurrency 12
+ontario-auto-index --database data/registry.sqlite3 report
+ontario-auto-index --database data/registry.sqlite3 ingest --dealer all --output data/all-vehicles.json
+```
