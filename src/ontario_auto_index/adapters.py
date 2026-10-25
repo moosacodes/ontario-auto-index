@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import asyncio
 import base64
 import re
 from dataclasses import dataclass
@@ -54,11 +55,17 @@ class AdapterRegistry:
         except KeyError as exc:
             raise KeyError(f"unsupported adapter: {key}") from exc
 
+    def supports(self, key: str | None) -> bool:
+        return bool(key and key in self._adapters)
+
     @classmethod
     def defaults(cls, client: httpx.AsyncClient | None = None) -> AdapterRegistry:
         registry = cls()
         registry.register(ZopSoftwareAdapter(client))
         registry.register(JsonLdInventoryAdapter(client))
+        registry.register(DealerCityAdapter(client))
+        for key in ("html-inventory", "wordpress", "strathcom"):
+            registry.register(HtmlInventoryAdapter(key, client))
         return registry
 
 
@@ -86,6 +93,7 @@ class ZopSoftwareAdapter:
         self.client = client or httpx.AsyncClient(
             follow_redirects=True,
             timeout=30,
+            transport=httpx.AsyncHTTPTransport(retries=2),
             headers={"User-Agent": "OntarioAutoIndex/0.1 (+personal research)"},
         )
         self._owns_client = client is None
@@ -174,6 +182,7 @@ class JsonLdInventoryAdapter:
         self.client = client or httpx.AsyncClient(
             follow_redirects=True,
             timeout=30,
+            transport=httpx.AsyncHTTPTransport(retries=2),
             headers={"User-Agent": "OntarioAutoIndex/0.1 (+personal research)"},
         )
         self._owns_client = client is None
@@ -187,8 +196,39 @@ class JsonLdInventoryAdapter:
         response.raise_for_status()
         dealer_id = _slug(urlparse(str(response.url)).netloc.removeprefix("www."))
         dealer_name = _page_name(response.text, dealer_id)
-        records: list[RawListing] = []
-        for item in _json_ld_items(extract_json_ld(response.text)):
+        records = _json_ld_records(response.text, str(response.url), dealer_id, dealer_name)
+        if records:
+            return records
+        parser = LexborHTMLParser(response.text)
+        links: list[str] = []
+        for anchor in parser.css("a[href]"):
+            href = anchor.attributes.get("href", "")
+            absolute = urljoin(str(response.url), href)
+            path = urlparse(absolute).path.lower()
+            if (any(marker in path for marker in ("/vehicle", "/inventory/", "/used/", "/cars/"))
+                    and re.search(r"\d", path) and absolute not in links):
+                links.append(absolute)
+        semaphore = asyncio.Semaphore(8)
+
+        async def read_detail(detail_url: str) -> list[RawListing]:
+            async with semaphore:
+                try:
+                    detail = await self.client.get(detail_url)
+                    detail.raise_for_status()
+                except httpx.HTTPError:
+                    return []
+                return _json_ld_records(detail.text, str(detail.url), dealer_id, dealer_name)
+
+        batches = await asyncio.gather(*(read_detail(link) for link in links[:300]))
+        unique: dict[str, RawListing] = {}
+        for record in (item for batch in batches for item in batch):
+            unique[record.source_id or record.listing_url] = record
+        return list(unique.values())
+
+
+def _json_ld_records(html: str, base_url: str, dealer_id: str, dealer_name: str) -> list[RawListing]:
+    records: list[RawListing] = []
+    for item in _json_ld_items(extract_json_ld(html)):
             item_type = item.get("@type")
             types = item_type if isinstance(item_type, list) else [item_type]
             if not any(value in {"Vehicle", "Car", "Product"} for value in types):
@@ -210,7 +250,7 @@ class JsonLdInventoryAdapter:
             records.append(RawListing(
                 dealer_id=dealer_id,
                 dealer_name=dealer_name,
-                listing_url=urljoin(str(response.url), listing_url),
+                listing_url=urljoin(base_url, listing_url),
                 original=OriginalValues(
                     year=_string(vehicle.get("vehicleModelDate") or vehicle.get("modelDate")),
                     make=_string(make),
@@ -221,7 +261,7 @@ class JsonLdInventoryAdapter:
                 trim=_string(vehicle.get("vehicleConfiguration")),
                 source_id=_string(item.get("sku") or vehicle.get("vehicleIdentificationNumber")) or listing_url,
                 source_values=item,
-                image_urls=_image_urls(image_item, str(response.url)),
+                image_urls=_image_urls(image_item, base_url),
                 body_style=_string(vehicle.get("bodyType")),
                 exterior_colour=_string(vehicle.get("color")),
                 transmission=_string(vehicle.get("vehicleTransmission")),
@@ -229,7 +269,219 @@ class JsonLdInventoryAdapter:
                 fuel_type=_string(vehicle.get("fuelType")),
                 vin=_string(vehicle.get("vehicleIdentificationNumber")),
             ))
+    return records
+
+
+class DealerCityAdapter:
+    """Read DealerCity/SM360's public inventory listing endpoint."""
+
+    key = "dealercity"
+
+    def __init__(self, client: httpx.AsyncClient | None = None) -> None:
+        self.client = client or httpx.AsyncClient(
+            follow_redirects=True,
+            timeout=30,
+            transport=httpx.AsyncHTTPTransport(retries=2),
+            headers={"User-Agent": "OntarioAutoIndex/0.2 (+personal research)"},
+        )
+        self._owns_client = client is None
+
+    async def close(self) -> None:
+        if self._owns_client:
+            await self.client.aclose()
+
+    async def listings(self, url: str) -> list[RawListing]:
+        page = await self.client.get(url)
+        page.raise_for_status()
+        api_paths = re.findall(r'data-listing-api-url=["\']([^"\']+)["\']', page.text)
+        used_path = next((path for path in api_paths if "used-inventory" in path), None)
+        if not used_path:
+            used_path = "/en/used-inventory/api/listing"
+        endpoint = urljoin(str(page.url), used_path)
+        first = await self.client.get(endpoint)
+        first.raise_for_status()
+        payload = first.json()
+        vehicles = list(payload.get("vehicles", []))
+        pagination = payload.get("pagination", {})
+        pages = int(pagination.get("numberOfPages", 1)) if isinstance(pagination, dict) else 1
+        for page_number in range(2, min(pages, 100) + 1):
+            response = await self.client.get(endpoint, params={"page": page_number})
+            response.raise_for_status()
+            batch = response.json().get("vehicles", [])
+            if isinstance(batch, list):
+                vehicles.extend(batch)
+        dealer_id = _slug(urlparse(str(page.url)).netloc.removeprefix("www."))
+        dealer_name = _page_name(page.text, dealer_id)
+        records: list[RawListing] = []
+        for item in vehicles:
+            if not isinstance(item, dict):
+                continue
+            make = item.get("make") if isinstance(item.get("make"), dict) else {}
+            model = item.get("model") if isinstance(item.get("model"), dict) else {}
+            make_name = _string(make.get("displayName") or make.get("name"))
+            model_name = _string(model.get("name"))
+            year = _string(item.get("year"))
+            vehicle_id = _string(item.get("vehicleId"))
+            if not all((make_name, model_name, year, vehicle_id)):
+                continue
+            make_slug = _string(make.get("slug")) or _slug(make_name)
+            model_slug = _string(model.get("slug")) or _slug(model_name)
+            language = "/fr/" if "/fr/" in used_path else "/en/"
+            detail_slug = _slug(f"{year}-{make_name}-{model_name}")
+            listing_url = urljoin(str(page.url), f"{language}used-inventory/{make_slug}/{model_slug}/{detail_slug}-id{vehicle_id}")
+            multimedia = item.get("multimedia") if isinstance(item.get("multimedia"), dict) else {}
+            pictures = multimedia.get("picturesWithCompleteUrl", [])
+            images = tuple(str(value) for value in pictures[:12] if isinstance(value, str)) if isinstance(pictures, list) else ()
+            body = item.get("bodyStyle") if isinstance(item.get("bodyStyle"), dict) else {}
+            colour = item.get("exteriorColor") if isinstance(item.get("exteriorColor"), dict) else {}
+            fuel = item.get("fuel") if isinstance(item.get("fuel"), dict) else {}
+            organization = item.get("primaryOrganizationUnit") if isinstance(item.get("primaryOrganizationUnit"), dict) else {}
+            records.append(RawListing(
+                dealer_id=dealer_id,
+                dealer_name=dealer_name,
+                listing_url=listing_url,
+                original=OriginalValues(
+                    year=year,
+                    make=make_name,
+                    model=model_name,
+                    mileage=_string(item.get("odometer")),
+                    price=_string(item.get("salePrice") or item.get("listPrice")),
+                ),
+                trim=_string(item.get("trim")),
+                source_id=_string(item.get("serialNo")) or vehicle_id,
+                source_values=item,
+                image_urls=images,
+                municipality=_string(organization.get("city")),
+                body_style=_string(body.get("name")),
+                exterior_colour=_string(colour.get("colorDescription") or colour.get("colorDescriptionEn")),
+                transmission=_string(item.get("transmission")),
+                drivetrain=_string(item.get("driveTrain")),
+                fuel_type=_string(fuel.get("name")),
+                vin=_string(item.get("serialNo")),
+            ))
         return records
+
+
+class HtmlInventoryAdapter:
+    """Conservative adapter for server-rendered inventory and vehicle detail pages."""
+
+    def __init__(self, key: str = "html-inventory", client: httpx.AsyncClient | None = None) -> None:
+        self.key = key
+        self.client = client or httpx.AsyncClient(
+            follow_redirects=True,
+            timeout=30,
+            transport=httpx.AsyncHTTPTransport(retries=2),
+            headers={"User-Agent": "OntarioAutoIndex/0.2 (+personal research)"},
+        )
+        self._owns_client = client is None
+
+    async def close(self) -> None:
+        if self._owns_client:
+            await self.client.aclose()
+
+    async def listings(self, url: str) -> list[RawListing]:
+        first = await self.client.get(url)
+        first.raise_for_status()
+        dealer_id = _slug(urlparse(str(first.url)).netloc.removeprefix("www."))
+        dealer_name = _page_name(first.text, dealer_id)
+        pages = [first]
+        parser = LexborHTMLParser(first.text)
+        pagination = []
+        for anchor in parser.css("a[href]"):
+            href = anchor.attributes.get("href", "")
+            if re.search(r"(?:/page/\d+|[?&](?:page|product-page)=\d+)", href):
+                pagination.append(urljoin(str(first.url), href))
+        for page_url in list(dict.fromkeys(pagination))[:12]:
+            try:
+                page = await self.client.get(page_url)
+                if page.is_success:
+                    pages.append(page)
+            except httpx.HTTPError:
+                continue
+        links: list[str] = []
+        for page in pages:
+            for anchor in LexborHTMLParser(page.text).css("a[href]"):
+                href = anchor.attributes.get("href", "")
+                label = anchor.text(strip=True)
+                absolute = urljoin(str(page.url), href)
+                path = urlparse(absolute).path.lower()
+                if (re.search(r"\b(?:19|20)\d{2}\b", label)
+                        and any(marker in path for marker in ("inventory", "vehicle", "cars", "product"))
+                        and absolute not in links):
+                    links.append(absolute)
+        semaphore = asyncio.Semaphore(8)
+
+        async def parse_link(link: str) -> RawListing | None:
+            async with semaphore:
+                try:
+                    detail = await self.client.get(link)
+                    detail.raise_for_status()
+                except httpx.HTTPError:
+                    return None
+                json_records = _json_ld_records(detail.text, str(detail.url), dealer_id, dealer_name)
+                complete = [item for item in json_records if item.original.year and item.original.make and item.original.model]
+                return complete[0] if complete else _html_detail_record(
+                    detail.text, str(detail.url), dealer_id, dealer_name
+                )
+
+        results = await asyncio.gather(*(parse_link(link) for link in links[:500]))
+        unique: dict[str, RawListing] = {}
+        for record in (item for item in results if item is not None):
+            unique[record.source_id or record.listing_url] = record
+        return list(unique.values())
+
+
+def _html_detail_record(
+    html: str, url: str, dealer_id: str, dealer_name: str
+) -> RawListing | None:
+    parser = LexborHTMLParser(html)
+    heading = parser.css_first("h1")
+    title = heading.text(strip=True) if heading else ""
+    match = re.search(
+        r"\b(?P<year>(?:19|20)\d{2})\s+(?P<make>[A-Za-z][A-Za-z-]+)\s+(?P<model>[A-Za-z0-9][A-Za-z0-9 .-]*?)(?:\s[-|–]|$)",
+        title,
+    )
+    if not match:
+        match = re.search(r"\b(?P<year>(?:19|20)\d{2})\s+(?P<make>[A-Za-z][A-Za-z-]+)\s+(?P<model>[A-Za-z0-9][A-Za-z0-9.-]+)", title)
+    if not match:
+        return None
+    text = parser.body.text(separator=" ", strip=True) if parser.body else parser.text()
+    price_meta = parser.css_first('meta[property="product:price:amount"]')
+    price = price_meta.attributes.get("content") if price_meta else None
+    price = price or _label_value(text, r"(?:price|our price)", r"\$[\d,]+(?:\.\d{2})?") or _search(text, r"\$[\d,]+(?:\.\d{2})?")
+    mileage = _label_value(text, r"(?:kilometers|kilometres|mileage|odometer)", r"[\d, ]+\s*(?:km|kilometres)?")
+    vin = _label_value(text, r"vin", r"[A-HJ-NPR-Z0-9]{17}")
+    trim = _label_value(text, r"trim", r"[^|]{1,80}")
+    image_urls: list[str] = []
+    for node in parser.css('meta[property="og:image"], meta[name="twitter:image"], img[src]'):
+        source = node.attributes.get("content") or node.attributes.get("src")
+        if source:
+            image = urljoin(url, source)
+            if image.startswith(("http://", "https://")) and image not in image_urls:
+                image_urls.append(image)
+    return RawListing(
+        dealer_id=dealer_id,
+        dealer_name=dealer_name,
+        listing_url=url,
+        original=OriginalValues(match["year"], match["make"], match["model"].strip(), mileage, price),
+        trim=trim,
+        source_id=vin or url,
+        image_urls=tuple(image_urls[:12]),
+        body_style=_label_value(text, r"body(?: type| style)?", r"[A-Za-z -]{2,30}"),
+        exterior_colour=_label_value(text, r"exterior colou?r", r"[A-Za-z -]{2,30}"),
+        transmission=_label_value(text, r"transmission", r"[A-Za-z -]{2,30}"),
+        fuel_type=_label_value(text, r"fuel type", r"[A-Za-z -]{2,30}"),
+        vin=vin,
+    )
+
+
+def _label_value(text: str, label: str, value: str) -> str | None:
+    return _search(text, rf"\b(?:{label})\b\s*[:|-]?\s*(?P<value>{value})", "value")
+
+
+def _search(text: str, pattern: str, group: str | int = 0) -> str | None:
+    match = re.search(pattern, text, re.IGNORECASE)
+    return match.group(group).strip() if match else None
 
 
 def _json_ld_items(documents: list[dict[str, object]]) -> list[dict[str, object]]:
