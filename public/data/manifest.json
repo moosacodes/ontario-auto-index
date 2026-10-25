@@ -1,42 +1,196 @@
 {
-  "generated_at": "2026-10-25T19:23:12.190374+00:00",
+  "generated_at": "2026-10-25T20:06:20.147183+00:00",
   "partitions": [
+    {
+      "compressed_file": "401-dixie-kia-ontario.json.gz",
+      "dealer_id": "401-dixie-kia-ontario",
+      "file": "401-dixie-kia-ontario.json",
+      "sha256": "9c3de8359efb11f5b0156cf4ee8ad876211274eb6bc9d440ae92581700c0117b",
+      "vehicle_count": 30
+    },
+    {
+      "compressed_file": "401-dixie-mazda-ontario.json.gz",
+      "dealer_id": "401-dixie-mazda-ontario",
+      "file": "401-dixie-mazda-ontario.json",
+      "sha256": "8f28981203ba52372261784f5abb1ef8fc01825bf6e490e12d904f344592c11f",
+      "vehicle_count": 22
+    },
+    {
+      "compressed_file": "401-dixie-nissan-ontario.json.gz",
+      "dealer_id": "401-dixie-nissan-ontario",
+      "file": "401-dixie-nissan-ontario.json",
+      "sha256": "60fee7b33ac91b9d78e440ddbafc0a93dfd7f104370400f7e6820885832ceb9b",
+      "vehicle_count": 42
+    },
+    {
+      "compressed_file": "401-dixie-volkswagen-ontario.json.gz",
+      "dealer_id": "401-dixie-volkswagen-ontario",
+      "file": "401-dixie-volkswagen-ontario.json",
+      "sha256": "c6d86c6a7e2f20b2563ab499c62a36cf0f607c8140fc3ba43fe9dbd17c98e7db",
+      "vehicle_count": 34
+    },
     {
       "compressed_file": "5-star-dealers.json.gz",
       "dealer_id": "5-star-dealers",
       "file": "5-star-dealers.json",
-      "sha256": "923711746a0b7dc1affdf229559d70e6a52e9d17e6f73cae9230090a24e90fd2",
+      "sha256": "fbd0d2b9d341973421a0e3b178072c2fa361c9871657f988e41dc13012451a68",
       "vehicle_count": 332
+    },
+    {
+      "compressed_file": "bolton-toyota-bolton.json.gz",
+      "dealer_id": "bolton-toyota-bolton",
+      "file": "bolton-toyota-bolton.json",
+      "sha256": "bf1f289c4c4b55fc90a881600cca753716716d720135f850c202b37a7af632d5",
+      "vehicle_count": 20
+    },
+    {
+      "compressed_file": "boss-auto-oshawa.json.gz",
+      "dealer_id": "boss-auto-oshawa",
+      "file": "boss-auto-oshawa.json",
+      "sha256": "27bca7d38f7387147864e9af4bcf26d3e2590dd2ee6495e765493606e8ac8ef3",
+      "vehicle_count": 23
+    },
+    {
+      "compressed_file": "bramgate-volkswagen-brampton.json.gz",
+      "dealer_id": "bramgate-volkswagen-brampton",
+      "file": "bramgate-volkswagen-brampton.json",
+      "sha256": "d672547414a0a7772782a15c48fe13325b2b5d0669c6a3cacb9da4f85198b6b6",
+      "vehicle_count": 79
+    },
+    {
+      "compressed_file": "cooksville-dodge-chrysler-jeep-ram-mississauga.json.gz",
+      "dealer_id": "cooksville-dodge-chrysler-jeep-ram-mississauga",
+      "file": "cooksville-dodge-chrysler-jeep-ram-mississauga.json",
+      "sha256": "f521e6853aa7ad6a782d7f944a42ce017e668fab036f5362186f54b730d4e16c",
+      "vehicle_count": 35
+    },
+    {
+      "compressed_file": "frank-gies-auto-sales-waterloo.json.gz",
+      "dealer_id": "frank-gies-auto-sales-waterloo",
+      "file": "frank-gies-auto-sales-waterloo.json",
+      "sha256": "d7e9ea897f17f3a3e60e40810813e3d78d13af3a6ab5dbf730b95a2633a45cad",
+      "vehicle_count": 7
+    },
+    {
+      "compressed_file": "frost-chevrolet-buick-gmc-cadillac-brampton.json.gz",
+      "dealer_id": "frost-chevrolet-buick-gmc-cadillac-brampton",
+      "file": "frost-chevrolet-buick-gmc-cadillac-brampton.json",
+      "sha256": "d65c531b72312124a26d30bda287d070d7e64b94b04aa8ff8a3ae54be1ed4a04",
+      "vehicle_count": 31
+    },
+    {
+      "compressed_file": "hamilton-volvo-ontario.json.gz",
+      "dealer_id": "hamilton-volvo-ontario",
+      "file": "hamilton-volvo-ontario.json",
+      "sha256": "7631a59189253a690ca42e8bc4789cbe6db6d37aa024b4645e382dbe997ec7ab",
+      "vehicle_count": 5
+    },
+    {
+      "compressed_file": "hdo-cars-ontario.json.gz",
+      "dealer_id": "hdo-cars-ontario",
+      "file": "hdo-cars-ontario.json",
+      "sha256": "520172ff7b9eb8af29fe0009443179ad8bce6fdfcec2d93efdd72140f152c7ce",
+      "vehicle_count": 27
+    },
+    {
+      "compressed_file": "humberview-chevrolet-buick-gmc-toronto.json.gz",
+      "dealer_id": "humberview-chevrolet-buick-gmc-toronto",
+      "file": "humberview-chevrolet-buick-gmc-toronto.json",
+      "sha256": "d4d34254d98a2b4016209f3aa968881ee65fff1ea4d962fce62c3480294e28a5",
+      "vehicle_count": 67
+    },
+    {
+      "compressed_file": "humberview-volkswagen-toronto.json.gz",
+      "dealer_id": "humberview-volkswagen-toronto",
+      "file": "humberview-volkswagen-toronto.json",
+      "sha256": "0a5c4a6b77b37faf919ccd3cb590adbefab30b363c95af66777f8e486ca1831e",
+      "vehicle_count": 10
+    },
+    {
+      "compressed_file": "leggat-blue-mountain-honda-collingwood.json.gz",
+      "dealer_id": "leggat-blue-mountain-honda-collingwood",
+      "file": "leggat-blue-mountain-honda-collingwood.json",
+      "sha256": "fe75ac6bf1c3799cb542e538617a38ca196bd15e91c80ee99f5e5c1ddfe5ef13",
+      "vehicle_count": 3
+    },
+    {
+      "compressed_file": "mercedes-benz-brampton-brampton.json.gz",
+      "dealer_id": "mercedes-benz-brampton-brampton",
+      "file": "mercedes-benz-brampton-brampton.json",
+      "sha256": "d088db03821016e22c803b7bf484b1b12403782f2eee0f4db53729ec9d9077de",
+      "vehicle_count": 10
+    },
+    {
+      "compressed_file": "moody-s-motors-ontario.json.gz",
+      "dealer_id": "moody-s-motors-ontario",
+      "file": "moody-s-motors-ontario.json",
+      "sha256": "67fbc856dcfed607249b1433e6a95d5630b1f40ee8be81c09dacc160bd6234bf",
+      "vehicle_count": 16
+    },
+    {
+      "compressed_file": "n-p-platinum-auto-sales-ontario.json.gz",
+      "dealer_id": "n-p-platinum-auto-sales-ontario",
+      "file": "n-p-platinum-auto-sales-ontario.json",
+      "sha256": "5c4cdcf15b4e2ea98c9b6fd7b498c0af0ba7b45cb7e18fef5641ed76de4dc407",
+      "vehicle_count": 50
+    },
+    {
+      "compressed_file": "orangeville-toyota-orangeville.json.gz",
+      "dealer_id": "orangeville-toyota-orangeville",
+      "file": "orangeville-toyota-orangeville.json",
+      "sha256": "9b23cd706a80cc6130617fd4d59948b3836a3449042cda969d1da78033bd970f",
+      "vehicle_count": 30
     },
     {
       "compressed_file": "ottawa-auto-sales.json.gz",
       "dealer_id": "ottawa-auto-sales",
       "file": "ottawa-auto-sales.json",
-      "sha256": "4b6caa3a9339940c44a2dfe566afe1e039ba2472ac3e7778fb32c588f867f95c",
+      "sha256": "e55c29961ff60a1ba80123fbbbdfa207e65edfc863441cfce3f3622a5f7f6185",
       "vehicle_count": 9
     },
     {
       "compressed_file": "right-way-auto.json.gz",
       "dealer_id": "right-way-auto",
       "file": "right-way-auto.json",
-      "sha256": "a60581afbd68be0d18571664a6f5a6f5d4669001aa8d5f4a7366bb78ac097675",
+      "sha256": "156f0a1cddcdc63eb922f5b7d9a6739de6a81d99458ff3fcbbaa61924f6eb92b",
       "vehicle_count": 6
+    },
+    {
+      "compressed_file": "royalty-autohaus-ontario.json.gz",
+      "dealer_id": "royalty-autohaus-ontario",
+      "file": "royalty-autohaus-ontario.json",
+      "sha256": "ec8bd4772d04d75cb1d6e4e3e4e1c6b57c258f9a58cffb7c054e2fca666e3e65",
+      "vehicle_count": 73
+    },
+    {
+      "compressed_file": "signature-cars-mississauga.json.gz",
+      "dealer_id": "signature-cars-mississauga",
+      "file": "signature-cars-mississauga.json",
+      "sha256": "566393e2ff15b3d90017b97d048b31ffee39b0176d362b19daf632673c880dc8",
+      "vehicle_count": 55
+    },
+    {
+      "compressed_file": "thornhill-hyundai-ontario.json.gz",
+      "dealer_id": "thornhill-hyundai-ontario",
+      "file": "thornhill-hyundai-ontario.json",
+      "sha256": "d97aad4593bb87ec51a8d189217abaaa9e3e41e5b893da004fdc027f536f7a6d",
+      "vehicle_count": 30
     },
     {
       "compressed_file": "titanium-auto.json.gz",
       "dealer_id": "titanium-auto",
       "file": "titanium-auto.json",
-      "sha256": "e112c47235ff49208bbe35636b59c7dde743d032b9ac90252d2f90a10f30880d",
+      "sha256": "3a0b37005b6e521746927d7b2b375186e642bea02d424aa49f16c4b80d731d85",
       "vehicle_count": 69
     },
     {
       "compressed_file": "waynes-auto-world.json.gz",
       "dealer_id": "waynes-auto-world",
       "file": "waynes-auto-world.json",
-      "sha256": "a42033434770231075011ff7c668c017bef9b7b916f6d70d5cec7489e938a81a",
+      "sha256": "9502ef757220c5cb2807edadc83b1b5e32a15bc189bd5661739298cd8c4f4ff6",
       "vehicle_count": 24
     }
   ],
   "schema_version": 2,
-  "vehicle_count": 440
+  "vehicle_count": 1139
 }
