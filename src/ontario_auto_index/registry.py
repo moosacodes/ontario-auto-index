@@ -109,7 +109,9 @@ def identify_platform(html: str) -> str:
     if "typesense_host" in lowered and "zopsoftware" in lowered:
         return "zopsoftware-typesense"
     if "wp-content" in lowered:
-        return "wordpress"
+        return "schemaorg-jsonld" if 'application/ld+json' in lowered else "wordpress"
+    if 'application/ld+json' in lowered and any(marker in lowered for marker in ('"vehicle"', '"car"', '"product"')):
+        return "schemaorg-jsonld"
     return "unknown"
 
 

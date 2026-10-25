@@ -46,6 +46,10 @@ ontario-auto-index --database data\registry.sqlite3 ingest --dealer ottawa-auto-
 ontario-auto-index --database data\registry.sqlite3 snapshot data\raw-vehicles.json
 ```
 
+Use `--dealer all` to ingest every registry entry currently marked `inventory`
+or `verified`. Platform-specific Typesense and portable Schema.org JSON-LD
+adapters both preserve source-published photos and specifications.
+
 The CLI also provides `registry-export`, `registry-verify`, and `validate`.
 The registry and generated working files remain local; only the bounded,
 validated static release belongs in the website output.

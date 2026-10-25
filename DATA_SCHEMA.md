@@ -1,6 +1,6 @@
 # Data schema
 
-Schema version: `1`
+Schema version: `2`
 
 ## Vehicle
 
@@ -11,6 +11,8 @@ Each published vehicle has:
 - `observed_at`, `last_verified_at`;
 - `original`: extracted strings exactly as observed;
 - normalized `year`, `make`, `model`, `trim`, `mileage_km`, `price_cad`;
+- source-published `image_urls` plus optional municipality, body style, colour,
+  transmission, drivetrain, fuel type, and VIN specifications;
 - `price_conditions`: source text and flags such as finance/lease/plus-tax;
 - `validation_status`.
 

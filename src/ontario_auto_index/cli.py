@@ -8,7 +8,7 @@ from pathlib import Path
 
 import httpx
 
-from .adapters import ZopSoftwareAdapter
+from .adapters import AdapterRegistry
 from .normalization import deduplicate, normalize_listing
 from .registry import DealerRegistry
 from .snapshots import write_partitioned_snapshots
@@ -65,19 +65,27 @@ async def _verify(registry: DealerRegistry) -> None:
 
 
 async def _ingest(registry: DealerRegistry, dealer_id: str, output: Path) -> None:
-    dealer = next(dealer for dealer in registry.all() if dealer.dealer_id == dealer_id)
-    adapter = ZopSoftwareAdapter()
-    try:
-        raw = await adapter.listings(dealer.inventory_url)
-    finally:
-        await adapter.close()
-    vehicles = deduplicate([
-        normalize_listing(replace(item, dealer_id=dealer.dealer_id, dealer_name=dealer.name))
-        for item in raw
-    ])
+    dealers = [dealer for dealer in registry.all() if dealer_id == "all" and dealer.status in {"inventory", "verified"} or dealer.dealer_id == dealer_id]
+    if not dealers:
+        raise ValueError(f"dealer not found or not ingestible: {dealer_id}")
+    collected = []
+    for dealer in dealers:
+        adapters = AdapterRegistry.defaults()
+        adapter = adapters.get(dealer.adapter_key or dealer.platform or "schemaorg-jsonld")
+        try:
+            raw = await adapter.listings(dealer.inventory_url)
+        finally:
+            close = getattr(adapter, "close", None)
+            if close:
+                await close()
+        collected.extend(
+            normalize_listing(replace(item, dealer_id=dealer.dealer_id, dealer_name=dealer.name, municipality=item.municipality or dealer.municipality))
+            for item in raw
+        )
+    vehicles = deduplicate(collected)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps([asdict(item) for item in vehicles], default=str, indent=2), encoding="utf-8")
-    print(f"ingested {len(vehicles)} vehicles from {dealer.name}")
+    print(f"ingested {len(vehicles)} vehicles from {len(dealers)} dealer(s)")
 
 
 def _validate(source: Path, output: Path) -> None:

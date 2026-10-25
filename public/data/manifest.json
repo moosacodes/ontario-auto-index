@@ -1,28 +1,28 @@
 {
-  "generated_at": "2026-10-25T18:41:06.304764+00:00",
+  "generated_at": "2026-10-25T19:06:45.391936+00:00",
   "partitions": [
     {
       "compressed_file": "ottawa-auto-sales.json.gz",
       "dealer_id": "ottawa-auto-sales",
       "file": "ottawa-auto-sales.json",
-      "sha256": "eee9db4158b402cec40442ac6540a4c183b92600eda4c387505f654a62b88480",
+      "sha256": "87027e6ea3679087e44723a295a662af4aef936cf6ecf0b30212fa3cc0a97f28",
       "vehicle_count": 9
     },
     {
       "compressed_file": "right-way-auto.json.gz",
       "dealer_id": "right-way-auto",
       "file": "right-way-auto.json",
-      "sha256": "f69736137076967bd23f733e4fb61d99d77e9392bd19ff755915039239469bcf",
+      "sha256": "b22b44d46fa3242b0487db4c37eeb491f11c0c49c1b2e24cb08762ec54442141",
       "vehicle_count": 6
     },
     {
       "compressed_file": "waynes-auto-world.json.gz",
       "dealer_id": "waynes-auto-world",
       "file": "waynes-auto-world.json",
-      "sha256": "5be20109fce296263682cb39e63e86f78b70218a474fc9fcee1ef5a1727a55f3",
+      "sha256": "686bc4d55c97082515e2d8225963247c5d607e77f08f4b7373dc8fa3949cd79f",
       "vehicle_count": 24
     }
   ],
-  "schema_version": 1,
+  "schema_version": 2,
   "vehicle_count": 39
 }

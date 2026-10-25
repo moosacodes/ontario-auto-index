@@ -26,3 +26,4 @@ def test_registry_persists_and_exports_dealers(tmp_path: Path) -> None:
 def test_platform_identification_is_evidence_based() -> None:
     assert identify_platform('"TYPESENSE_HOST": "search.example" "zopsoftware"') == "zopsoftware-typesense"
     assert identify_platform("<html></html>") == "unknown"
+    assert identify_platform('<script type="application/ld+json">{"@type":"Vehicle"}</script>') == "schemaorg-jsonld"

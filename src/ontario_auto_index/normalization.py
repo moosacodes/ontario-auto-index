@@ -31,6 +31,14 @@ def normalize_listing(raw: RawListing, observed_at: datetime | None = None) -> V
         price_cad=price,
         price_conditions=PriceConditions(raw.price_conditions_text, False, False, None),
         validation_status="valid",
+        image_urls=raw.image_urls,
+        municipality=_clean(raw.municipality),
+        body_style=_clean(raw.body_style),
+        exterior_colour=_clean(raw.exterior_colour),
+        transmission=_clean(raw.transmission),
+        drivetrain=_clean(raw.drivetrain),
+        fuel_type=_clean(raw.fuel_type),
+        vin=_clean(raw.vin),
     )
     return replace(vehicle, validation_status="valid" if not validate_vehicle(vehicle) else "invalid")
 

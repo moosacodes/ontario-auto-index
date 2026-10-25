@@ -10,7 +10,7 @@ from pathlib import Path
 
 from .models import Vehicle
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 
 
 def _json_value(value: object) -> object:

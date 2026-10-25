@@ -43,6 +43,14 @@ class Vehicle:
     price_cad: Decimal | None
     price_conditions: PriceConditions
     validation_status: ValidationStatus
+    image_urls: tuple[str, ...] = ()
+    municipality: str | None = None
+    body_style: str | None = None
+    exterior_colour: str | None = None
+    transmission: str | None = None
+    drivetrain: str | None = None
+    fuel_type: str | None = None
+    vin: str | None = None
 
 
 def validate_vehicle(vehicle: Vehicle) -> list[str]:
@@ -60,4 +68,9 @@ def validate_vehicle(vehicle: Vehicle) -> list[str]:
         errors.append("price cannot be negative")
     if vehicle.last_verified_at < vehicle.observed_at:
         errors.append("last_verified_at cannot precede observed_at")
+    for image_url in vehicle.image_urls:
+        image = urlparse(image_url)
+        if image.scheme not in {"http", "https"} or not image.netloc:
+            errors.append("image_urls must contain absolute HTTP(S) URLs")
+            break
     return errors
