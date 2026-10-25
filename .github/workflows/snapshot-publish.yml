@@ -1,0 +1,23 @@
+name: Snapshot publishing
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Inventory validation"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: snapshot-publication
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Publication is gated on a validated snapshot manifest."
