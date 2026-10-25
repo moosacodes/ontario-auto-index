@@ -8,6 +8,7 @@ def test_zop_configuration_is_read_from_page() -> None:
     config = _zop_config(html)
     assert config["collection"] == "collection-id"
     assert config["host"] == "search.example.test"
+    assert config["image_domain"] == ""
 
 
 def test_json_ld_extraction_ignores_non_json_scripts() -> None:
@@ -21,4 +22,11 @@ def test_image_extraction_normalizes_gallery_urls() -> None:
         "https://dealer.test/one.jpg",
         "https://dealer.test/two.jpg",
         "https://cdn.test/three.jpg",
+    )
+
+
+def test_image_extraction_uses_platform_asset_host_for_relative_paths() -> None:
+    item = {"image_urls": "/upload/collection/vehicle.jpg"}
+    assert _image_urls(item, "https://assets.example.test") == (
+        "https://assets.example.test/upload/collection/vehicle.jpg",
     )

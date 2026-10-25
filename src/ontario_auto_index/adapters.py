@@ -104,13 +104,27 @@ class ZopSoftwareAdapter:
             "per_page": 250,
             "filter_by": "visibility:>0 && deleted_at:=0 && status:=[Instock]",
         }
-        response = await self.client.get(
-            f"https://{config['host']}/collections/{config['collection']}/documents/search",
-            params=query,
-            headers={"x-typesense-api-key": config["api_key"]},
-        )
-        response.raise_for_status()
-        payload = response.json()
+        endpoint = f"https://{config['host']}/collections/{config['collection']}/documents/search"
+        payload: dict[str, object] = {}
+        hits: list[dict[str, object]] = []
+        page_number = 1
+        while True:
+            response = await self.client.get(
+                endpoint,
+                params={**query, "page": page_number},
+                headers={"x-typesense-api-key": config["api_key"]},
+            )
+            response.raise_for_status()
+            payload = response.json()
+            batch = payload.get("hits", [])
+            if not isinstance(batch, list):
+                raise TypeError("Typesense response did not contain a hits list")
+            hits.extend(item for item in batch if isinstance(item, dict))
+            found = int(payload.get("found", len(hits)))
+            if not batch or len(hits) >= found:
+                break
+            page_number += 1
+        payload["hits"] = hits
         dealer_id = _slug(config["client_domain"])
         dealer_name = _dealer_name(payload, page.text, dealer_id)
         listings: list[RawListing] = []
@@ -135,7 +149,10 @@ class ZopSoftwareAdapter:
                     trim=_string(item.get("trim")),
                     source_id=_string(item.get("id")) or listing_url,
                     source_values={key: value for key, value in item.items()},
-                    image_urls=_image_urls(item, str(page.url)),
+                    image_urls=_image_urls(
+                        item,
+                        config.get("image_domain") or str(page.url),
+                    ),
                     municipality=_first_string(item, "city", "municipality", "location_city"),
                     body_style=_first_string(item, "body_style", "body"),
                     exterior_colour=_first_string(item, "exterior_color", "exterior_colour", "color"),
@@ -258,11 +275,13 @@ def _zop_config(html: str) -> dict[str, str]:
         base64.b64decode(values["key"], validate=True)
     except (ValueError, TypeError):
         raise ValueError("Zop Software search key is not valid base64") from None
+    image_match = re.search(r'"IMAGE_DOMAIN":\s*"(?P<image>[^"]+)"', html)
     return {
         "client_domain": values["client"],
         "collection": values["collection"],
         "api_key": values["key"],
         "host": values["host"],
+        "image_domain": image_match.group("image") if image_match else "",
     }
 
 
@@ -297,7 +316,11 @@ def _image_urls(item: dict[str, object], base_url: str) -> tuple[str, ...]:
         for source in re.split(r"\s*[;|]\s*", candidate):
             if not source:
                 continue
-            url = urljoin(base_url, source)
+            if source.startswith("/"):
+                parsed_base = urlparse(base_url)
+                url = f"{parsed_base.scheme}://{parsed_base.netloc}{source}"
+            else:
+                url = urljoin(base_url.rstrip("/") + "/", source)
             if url.startswith(("http://", "https://")) and url not in urls:
                 urls.append(url)
     return tuple(urls[:12])
