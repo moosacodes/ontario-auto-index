@@ -14,6 +14,14 @@ export type Vehicle = {
   price_cad: string | null;
   price_conditions: { text: string | null };
   validation_status: "valid" | "invalid" | "needs_review";
+  image_urls?: string[];
+  municipality?: string | null;
+  body_style?: string | null;
+  exterior_colour?: string | null;
+  transmission?: string | null;
+  drivetrain?: string | null;
+  fuel_type?: string | null;
+  vin?: string | null;
 };
 
 export type Manifest = {
