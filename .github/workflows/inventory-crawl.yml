@@ -11,6 +11,8 @@ on:
         description: "Zero-based shard to run"
         required: true
         default: "0"
+  schedule:
+    - cron: "23 6 * * 2,5"
 
 permissions:
   contents: read
@@ -29,7 +31,9 @@ jobs:
         with:
           python-version: "3.11"
       - run: python -m pip install -e .
-      - run: echo "Crawl requires a populated, permitted registry and adapter configuration."
+      - run: ontario-auto-index --database data/registry.sqlite3 registry-import data/dealers.json
+      - run: ontario-auto-index --database data/registry.sqlite3 ingest --dealer all --output data/crawled-vehicles.json
+      - run: ontario-auto-index validate data/crawled-vehicles.json --output data/validated-vehicles.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -37,4 +41,7 @@ jobs:
           path: |
             checkpoints/
             failures/
+            data/crawled-vehicles.json
+            data/validated-vehicles.json
+            data/ingestion-failures.json
           if-no-files-found: ignore

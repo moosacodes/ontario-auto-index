@@ -22,4 +22,16 @@ jobs:
         with:
           python-version: "3.11"
       - run: python -m pip install -e .
-      - run: echo "Discovery runner is intentionally explicit; registry source configuration is required before enabling collection."
+      - run: ontario-auto-index --database data/registry.sqlite3 registry-import data/dealers.json
+      - run: ontario-auto-index --database data/registry.sqlite3 discover --output data/discovered-dealers.json
+      - run: ontario-auto-index --database data/registry.sqlite3 verify --limit 100 --status discovered --concurrency 8 --output data/verification-report.json
+      - run: ontario-auto-index --database data/registry.sqlite3 report > data/coverage-report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dealer-discovery-${{ github.run_id }}
+          path: |
+            data/discovered-dealers.json
+            data/verification-report.json
+            data/coverage-report.json
+          if-no-files-found: warn
