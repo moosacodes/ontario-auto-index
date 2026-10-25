@@ -2,10 +2,12 @@
 
 ## GitHub Actions and Pages
 
-GitHub Pages is the initial public host. The deployment workflow builds the
-frontend against a validated snapshot artifact and publishes it only after
-validation. Publishing has a concurrency group so a newer release cancels an
-older pending publication.
+GitHub Pages is the initial public host. The Pages workflow builds the
+frontend against the committed, validated snapshot on pushes to `main` and
+manual dispatches, then publishes it through the Actions deployment API.
+Publishing has a concurrency group so a newer release cancels an older pending
+publication. The repository Pages source must be set to **GitHub Actions**;
+Pages is not configured from a branch directory.
 
 Actions use minimum permissions, explicit timeouts, bounded retries, and manual
 dispatch inputs. Crawlers are sharded deterministically and do not rely on

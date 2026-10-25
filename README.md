@@ -37,8 +37,21 @@ npm run dev
 ```
 
 The frontend accepts a generated data directory at `public/data`. A small
-sample is intentionally not included: empty-state behavior is safer than
-mistaking test data for live inventory.
+release snapshot from Ottawa Auto Sales is included after a live ingestion
+verification. Recreate it with:
+
+```powershell
+ontario-auto-index --database data\registry.sqlite3 registry-import data\dealers.json
+ontario-auto-index --database data\registry.sqlite3 ingest --dealer ottawa-auto-sales
+ontario-auto-index --database data\registry.sqlite3 snapshot data\raw-vehicles.json
+```
+
+The CLI also provides `registry-export`, `registry-verify`, and `validate`.
+The registry and generated working files remain local; only the bounded,
+validated static release belongs in the website output.
+
+The committed release is deployable to GitHub Pages through the Actions
+workflow. Pages is public and is not an access-control boundary.
 
 ## Project layout
 

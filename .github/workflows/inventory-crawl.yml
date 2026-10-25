@@ -11,8 +11,6 @@ on:
         description: "Zero-based shard to run"
         required: true
         default: "0"
-  schedule:
-    - cron: "41 4 * * 1,4"
 
 permissions:
   contents: read
