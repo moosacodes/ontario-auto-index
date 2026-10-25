@@ -38,11 +38,29 @@ search-result guesses:
 - [Toyota Canada dealer network](https://www.shoptoyota.ca/ontario/en/dealers).
 - [Honda Canada dealer locator](https://www.honda.ca/dealer-locator).
 - [Ford Canada dealer locator](https://www.ford.ca/dealerships/).
+- [OntarioCars.ca](https://www.ontariocars.ca/) — a UCDA member inventory
+  destination. Its public site returned HTTP 403 during this evaluation, so it
+  is not treated as a source unless an authorized feed or documented
+  integration is obtained.
 
 `data/discovery-candidates.json` contains the first manufacturer-locator seed
 batch. These records are deliberately `discovered`, not `inventory`: their
 websites, inventory endpoints, robots policies, and extraction feasibility must
 still be evaluated before collection.
+
+The current working registry also includes live sources in London discovered
+through direct website evaluation: 5 Star Dealers and Titanium Auto. Their
+public Zop Software/Typesense indexes returned 332 and 69 records respectively
+on 2026-10-25. The registry records those sources as `inventory`; it does not
+generalize that result to other dealers using similar-looking websites.
+
+UCDA's current directory requires an interactive Cloudflare Turnstile challenge
+for searches. OMVIC's public portal is also an interactive consumer search and
+does not expose a documented bulk API. The project must not bypass those
+controls or scrape around them. A repeatable full-population import requires
+an authorized export/feed or a permitted directory integration; until then,
+manufacturer locators and individually verified dealership sites remain
+separate provenance classes.
 
 ## Discovery deliverable
 

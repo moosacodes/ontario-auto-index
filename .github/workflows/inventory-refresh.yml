@@ -1,0 +1,58 @@
+name: Live inventory refresh
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: live-inventory-publication
+  cancel-in-progress: true
+
+jobs:
+  refresh-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install ingestion dependencies
+        run: python -m pip install -e .
+      - name: Load current dealer registry
+        run: >-
+          ontario-auto-index --database data/registry.sqlite3 registry-import
+          data/dealers.json
+      - name: Ingest permitted supported dealers
+        run: >-
+          ontario-auto-index --database data/registry.sqlite3 ingest
+          --dealer all --output data/raw-vehicles.json
+      - name: Validate collected listings
+        run: >-
+          ontario-auto-index validate data/raw-vehicles.json
+          --output data/validated-vehicles.json
+      - name: Generate deterministic snapshot
+        run: >-
+          ontario-auto-index snapshot data/validated-vehicles.json
+          --output public/data/partitions/inventory.json.gz
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4

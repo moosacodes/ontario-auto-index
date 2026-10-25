@@ -37,7 +37,7 @@ npm run dev
 ```
 
 The frontend accepts a generated data directory at `public/data`. A small
-release snapshot from Ottawa Auto Sales is included after a live ingestion
+release snapshot from five live sources is included after live ingestion
 verification. Recreate it with:
 
 ```powershell

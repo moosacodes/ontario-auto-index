@@ -9,9 +9,19 @@ Publishing has a concurrency group so a newer release cancels an older pending
 publication. The repository Pages source must be set to **GitHub Actions**;
 Pages is not configured from a branch directory.
 
+The `Live inventory refresh` workflow runs every six hours at minute 17 and
+also supports manual dispatch. It runs the permitted supported-dealer adapters,
+rejects invalid records, generates a deterministic snapshot, builds the
+frontend, and publishes the result directly to Pages. It does not commit
+vehicle records to Git, so refreshes do not create an unbounded history or
+build-and-commit loop. A failed validation or crawl fails the publication
+instead of replacing the last successful Pages release.
+
 Actions use minimum permissions, explicit timeouts, bounded retries, and manual
 dispatch inputs. Crawlers are sharded deterministically and do not rely on
-runner disks between jobs.
+runner disks between jobs. The six-hour cadence applies only to currently
+supported sources; newly discovered dealerships remain excluded until their
+permissions and adapter have been verified.
 
 ## Access and privacy
 

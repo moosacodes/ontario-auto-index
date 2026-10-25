@@ -148,5 +148,35 @@
     "robots_allows_general": true,
     "last_checked_at": "2026-10-25T14:30:00-04:00",
     "notes": "Robots allows inventory paths, but the used inventory endpoint returned HTTP 403 during evaluation; not treated as crawlable."
+  },
+  {
+    "dealer_id": "5-star-dealers",
+    "name": "5 Star Dealers Inc.",
+    "municipality": "London",
+    "website_url": "https://www.5stardealer.com/",
+    "inventory_url": "https://www.5stardealer.com/inventory/",
+    "discovery_source_url": "https://www.5stardealer.com/inventory/",
+    "adapter_key": "zopsoftware-typesense",
+    "status": "inventory",
+    "platform": "zopsoftware-typesense",
+    "robots_url": null,
+    "robots_allows_general": true,
+    "last_checked_at": "2026-10-25T19:22:00+00:00",
+    "notes": "Live public Zop Software/Typesense inventory evaluated in London; 332 valid listing records returned with source URLs."
+  },
+  {
+    "dealer_id": "titanium-auto",
+    "name": "Titanium Auto",
+    "municipality": "London",
+    "website_url": "https://www.titaniumauto.ca/",
+    "inventory_url": "https://www.titaniumauto.ca/inventory/",
+    "discovery_source_url": "https://www.titaniumauto.ca/inventory/",
+    "adapter_key": "zopsoftware-typesense",
+    "status": "inventory",
+    "platform": "zopsoftware-typesense",
+    "robots_url": null,
+    "robots_allows_general": true,
+    "last_checked_at": "2026-10-25T19:22:00+00:00",
+    "notes": "Live public Zop Software/Typesense inventory evaluated in London; 69 valid listing records returned with source URLs."
   }
 ]
