@@ -12,8 +12,18 @@ async function loadVehicles(): Promise<Vehicle[]> {
   const manifest = (await response.json()) as Manifest;
   const parts = await Promise.all(
     manifest.partitions.map(async (partition) => {
-      const result = await fetch(`/data/${partition.file}`, { cache: "force-cache" });
+      const result = await fetch(`/data/partitions/${partition.compressed_file ?? partition.file}`, {
+        cache: "force-cache",
+      });
       if (!result.ok) throw new Error(`Inventory partition failed: ${partition.file}`);
+      if (partition.compressed_file) {
+        if (result.headers.get("content-encoding") === "gzip") {
+          return (await result.json()) as Vehicle[];
+        }
+        const stream = result.body?.pipeThrough(new DecompressionStream("gzip"));
+        if (!stream) throw new Error("Compressed inventory is unsupported by this browser.");
+        return (await new Response(stream).json()) as Vehicle[];
+      }
       return (await result.json()) as Vehicle[];
     }),
   );
@@ -24,6 +34,7 @@ function App() {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [saved, setSaved] = useState<Set<string>>(new Set());
   const [query, setQuery] = useState("");
+  const [sort, setSort] = useState<"relevance" | "price-low" | "mileage-low" | "year-new">("relevance");
   const [page, setPage] = useState(1);
   const [error, setError] = useState<string>();
 
@@ -47,7 +58,13 @@ function App() {
         .includes(needle),
     );
   }, [query, vehicles]);
-  const visible = filtered.slice(0, page * PAGE_SIZE);
+  const sorted = useMemo(() => [...filtered].sort((left, right) => {
+    if (sort === "price-low") return Number(left.price_cad ?? Infinity) - Number(right.price_cad ?? Infinity);
+    if (sort === "mileage-low") return (left.mileage_km ?? Infinity) - (right.mileage_km ?? Infinity);
+    if (sort === "year-new") return (right.year ?? 0) - (left.year ?? 0);
+    return 0;
+  }), [filtered, sort]);
+  const visible = sorted.slice(0, page * PAGE_SIZE);
 
   async function save(vehicle: Vehicle) {
     const next = !saved.has(vehicle.id);
@@ -72,6 +89,15 @@ function App() {
           onChange={(event) => { setQuery(event.target.value); setPage(1); }}
           placeholder="Search make, model, trim or dealer"
         />
+        <select aria-label="Sort inventory" value={sort} onChange={(event) => {
+          setSort(event.target.value as typeof sort);
+          setPage(1);
+        }}>
+          <option value="relevance">Sort: relevance</option>
+          <option value="price-low">Sort: price, low to high</option>
+          <option value="mileage-low">Sort: mileage, low to high</option>
+          <option value="year-new">Sort: newest year</option>
+        </select>
       </header>
       {error ? <section className="notice">{error} No inventory is shown until a valid snapshot is published.</section> : null}
       <section className="summary">{filtered.length} verified listing{filtered.length === 1 ? "" : "s"}</section>

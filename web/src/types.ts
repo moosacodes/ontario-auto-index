@@ -19,5 +19,5 @@ export type Vehicle = {
 export type Manifest = {
   schema_version: number;
   generated_at: string;
-  partitions: Array<{ file: string; make: string; vehicle_count: number }>;
+  partitions: Array<{ file: string; compressed_file?: string; dealer_id: string; vehicle_count: number }>;
 };
