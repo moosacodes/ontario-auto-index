@@ -1,0 +1,18 @@
+{
+  "broken": 71,
+  "checked": 305,
+  "platforms": {
+    "autosync": 22,
+    "d2cmedia": 48,
+    "dealercity": 42,
+    "dealerinspire": 1,
+    "html-inventory": 16,
+    "schemaorg-jsonld": 44,
+    "strathcom": 18,
+    "unknown": 102,
+    "wordpress": 7,
+    "zopsoftware-typesense": 5
+  },
+  "restricted": 0,
+  "verified": 213
+}

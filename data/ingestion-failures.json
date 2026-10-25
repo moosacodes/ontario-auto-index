@@ -1,0 +1,1038 @@
+[
+  {
+    "dealer_id": "22g-auto-sales-brampton",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "400-chrysler-innisfil",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "5-star-dealers-london",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "achilles-mazda-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "acura-sherway-etobicoke",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "addison-chevrolet-buick-gmc-mississauga",
+    "reason": "Client error '404 Not Found' for url 'https://addisononeglinton.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "airport-mazda-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "algoma-chrysler-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.algomachrysler.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "armin-auto-sales-toronto",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "arrow-truck-sales-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "ashie-motor-sales-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "autopia-cars-concord",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "azores-auto-group-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "b-town-autos-tricity-kitchener",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "bank-street-kia-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.bankstreetkia.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "barrhaven-chrysler-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "barrhaven-mazda-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.barrhavenmazda.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "barrie-ford-barrie",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "barrie-subaru-innisfil",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "bayfield-ford-lincoln-barrie",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "baywest-toyota-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "beacon-motors-limited-toronto",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "bernard-s-quality-cars-flesherton",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "bill-spencer-chevrolet-cobourg",
+    "reason": "Client error '404 Not Found' for url 'https://www.billspencerchevrolet.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "blackstock-ford-lincoln-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "bmw-grand-river-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "bmw-of-mississauga-mississauga",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "bourgeois-midland-hyundai-midland",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "boyer-ford-lincoln-bobcaygeon-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "brimell-toyota-toronto",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "brownlee-equipment-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "budd-s-chev-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "budd-s-mazada-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "burlington-toyota-burlington",
+    "reason": "Client error '404 Not Found' for url 'https://www.burlingtontoyota.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "caledon-mitsubishi-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "camco-acura-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "camp-out-rv-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "campbell-ford-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "capital-dodge-chrysler-jeep-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://capitaldodge.ca/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "car-club-outlet-kingston",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "carimex-waterloo",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "cars-unlimited-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "clarington-hyundai-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "coliseum-auto-sales-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "collingwood-hyundai-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "collingwood-nissan-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "collingwood-toyota-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.collingwoodtoyota.ca/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "coventry-north-land-rover-vaughan",
+    "reason": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+    "dealer_id": "crosby-vw-kitchener",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "curry-motors-haliburton",
+    "reason": "Client error '404 Not Found' for url 'https://www.currychevrolet.ca/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "dale-wurfel-chrysler-dodge-jeep-strathroy",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "daleo-motors-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "danny-sons-auto-sales-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "degroote-hill-chevrolet-buick-gmc-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.degrootehill.ca/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "dennis-searles-chevrolet-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.searleschev.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "dewildt-marine-powersports-hamilton",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "dixie-ford-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "dixie-mitsubishi-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "dixie-toyota-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://dixietoyota.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "don-valley-north-lexus-markham",
+    "reason": "Client error '404 Not Found' for url 'https://www.donvalleynorthlexus.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "dow-honda-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "downtown-lincoln-downtown-ford-toronto",
+    "reason": "Client error '404 Not Found' for url 'https://www.infinitidowntown.ca/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "downtown-motor-products-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "driven-newmarket",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "dundas-auto-sales-london",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "eagle-auto-mall-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "eastside-chevrolet-buick-gmc-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "erin-park-lexus-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "erin-park-toyota-mississauga",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "expressway-ford-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "family-honda-brampton",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "finch-used-cars-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "fines-ford-lincoln-bolton",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "fitzgerald-motors-inc-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "forbes-motors-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "forbes-waterloo-toyota-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.forbestoyota.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "foster-kia-toronto",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "gallinger-ford-lincoln-milton",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "georgian-bmw-mini-barrie",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "georgian-chevrolet-buick-gmc-barrie",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "gore-motors-honda-thunder-bay",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "grey-motors-mazda-owen-sound",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "gta-motorcars-inc-etobicoke",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "guay-s-garage-val-gagne",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "guelph-toyota-guelph",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "hal-wright-chevrolet-cadillac-gmc-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.halwrightchevroletcadillacgm.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "haldimand-motors-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "hamilton-hyundai-hamilton",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "hawkesbury-chrysler-hawkesbury",
+    "reason": "Client error '404 Not Found' for url 'https://hawkesburychrysler.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "hawkesbury-hyundai-hawkesbury",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "hawkesbury-mazda-hawkesbury",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "hawkesbury-toyota-hawkesbury",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "heaslip-ford-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "humberview-trucks-toronto",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "hunt-chrysler-dodge-milton",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "ideal-honda-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "islington-chrysler-jeep-dodge-ram-etobicoke",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "jack-findlay-motors-matheson",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "jaguar-land-rover-lakeridge-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "jerry-pfeil-chrysler-dodge-jeep-ram-new-hamburg",
+    "reason": "Client error '404 Not Found' for url 'https://www.jerrypfeilchryslerdodgejeepram.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "jiyash-auto-cambridge",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "john-dewar-s-autosource-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "kanata-honda-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "kanata-mazda-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "kanata-toyota-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.kanatatoyota.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "kenworth-truck-centre-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "kia-of-hamilton-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "kia-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "kingscross-hyundai-scarborough",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "kitchener-honda-kitchener",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "kitchener-kia-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "kitchener-mitsubishi-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "lakehead-motors-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "lakeshore-motors-ltd-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.lakeshoremotorsltd.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "lallo-mazda-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "larry-macdonald-chevrolet-buick-gmc-strathroy",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "lawson-motors-ltd-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "lecours-motor-sales-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "legendary-motorcar-company-halton-hills",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "lexus-of-oakville-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "logan-motors-used-car-sales-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "london-honda-ontario",
+    "reason": "unsupported platform: dealerinspire"
+  },
+  {
+    "dealer_id": "looloo-auto-sales-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "lucid-motors-toronto",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "macmaster-buick-gmc-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "manitoulin-chrysler-limited-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.manitoulinchrysler.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "marden-motors-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "marino-s-subaru-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "mark-wilson-s-better-used-cars-guelph",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "markham-infiniti-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "markham-mazda-markham",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "markville-cadillac-markham",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "markville-chevrolet-buick-gmc-markham",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "markville-toyota-markham",
+    "reason": "Client error '404 Not Found' for url 'https://www.markville.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "mazda-of-hamilton-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "mazda-of-toronto-north-york",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "mcquarrie-motor-products-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.mcquarriemotorproducts.ca/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "meadowvale-ford-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "meadowvale-honda-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "meadowvale-toyota-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://meadowvaletoyota.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "mercedes-benz-barrie-innisfil",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "midland-honda-midland",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "midtown-honda-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "miedemas-auto-sales-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "mike-fair-chevrolet-buick-gmc-cadillac-smiths-falls",
+    "reason": "Client error '404 Not Found' for url 'https://www.mikefairgm.ca/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "mills-motors-ltd-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "milton-hyundai-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "milton-kia-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "milton-nissan-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "milton-toyota-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.miltontoyota.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "minden-subaru-minden",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "mission-motors-wawa",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "mississauga-chrysler-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "mississauga-honda-mississauga",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "mississauga-hyundai-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "mississauga-kia-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "mississauga-toyota-mississauga",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "mitsubishi-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "montgomery-ford-lucknow-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "motorcity-mitsubishi-whitby",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "mountain-hyundai-hamilton",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "mtm-autohaus-markham",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "murray-s-garage-guelph",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "newmarket-toyota-newmarket",
+    "reason": "Client error '404 Not Found' for url 'https://www.newmarkettoyota.ca/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "newroads-mazda-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.newroadsmazda.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "northern-honda-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "northern-lights-ford-sales-and-quick-lane-wawa",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "northside-mazda-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "northwest-lexus-brampton",
+    "reason": "Client error '403 Forbidden' for url 'https://www.northwestlexus.com/inventory/'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403"
+  },
+  {
+    "dealer_id": "northwest-toyota-brampton",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "nurse-chevrolet-cadillac-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.marynurse.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "oakville-chrysler-dodge-jeep-ram-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "oakville-infiniti-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "oakville-volkswagen-oakville",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "ontario-chrysler-jeep-dodge-ram-mississauga",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "ontario-greenlight-motors-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "orangeville-chrysler-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.orangevillechrysler.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "orangeville-honda-orangeville",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "orangeville-hyundai-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "orangeville-volkswagen-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "orangville-kia-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "orl-ans-honda-orleans",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "orl-ans-kia-orleans",
+    "reason": "Client error '404 Not Found' for url 'https://www.orleanskia.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "orl-ans-toyota-orleans",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "ottawa-honda-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "owasco-volkswagen-whitby",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "owen-sound-hyundai-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "paycan-used-auto-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "peninsula-ford-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "petawawa-kia-petawawa",
+    "reason": "Client error '404 Not Found' for url 'https://www.petawawakia.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "peter-boyer-chevrolet-napanee",
+    "reason": "Client error '404 Not Found' for url 'https://www.boyernapanee.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "platinum-rv-caledon",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "policaro-acura-brampton",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "policaro-bmw-brampton",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "port-dover-kia-port-dover",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "prime-auto-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "queen-compact-cars-toronto",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "reid-bros-cadillac-buick-gmc-chevy-trucks-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.reidbros.ca/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "reliable-ford-fergus",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "rendezvous-nissan-hawkesbury",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "renfrew-chrysler-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "richmond-hill-toyota-richmond-hill",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "ridgewood-ford-minden",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "riverside-buick-gmc-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.riversideofprescott.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "riverview-automobile-ltd-wallaceburg",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "rogers-motors-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "royal-chevrolet-cadillac-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.royalchev.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "sam-s-car-sales-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "samozain-autos-mississauga",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "san-autohub-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "scarborough-toyota-scion-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "scott-drummond-chevrolet-buick-gmc-ontario",
+    "reason": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+    "dealer_id": "seaway-chevrolet-cadillac-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.seawaygm.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "sherway-nissan-etobicoke",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "simcoe-honda-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "simcoe-vw-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "smiths-falls-kia-smiths-falls",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "southwest-imports-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "spadoni-chevrolet-buick-gmc-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.spadonimotors.ca/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "stark-auto-sales-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "stouffville-toyota-ontario",
+    "reason": "Client error '404 Not Found' for url 'https://www.stouffvilletoyota.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "stratford-hyundai-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "streetsville-hyundai-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "subaru-of-mississauga-mississauga",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "summitautobrokers-com-richmond-hill",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "sunrise-toyota-orillia",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "sunset-country-ford-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "surgenor-hyundai-service-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "surgenor-national-leasing-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "team-chrysler-jeep-dodge-ram-mississauga",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "team-honda-powerhouse-of-milton-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "the-car-club-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "the-car-shoppe-whitby",
+    "reason": "Client error '404 Not Found' for url 'https://www.thecarshoppe.ca/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "thornhill-toyota-concord",
+    "reason": "Client error '404 Not Found' for url 'https://www.thornhilltoyota.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "timberland-ford-timmins",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "top-picks-auto-sales-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "town-country-chrysler-smiths-falls",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "toyota-lexus-on-the-park-toronto",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "trans-canada-chrysler-wawa",
+    "reason": "Client error '404 Not Found' for url 'https://www.transcanadachrysler.ca/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "troy-s-toys-guelph",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "urban-ford-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "victory-lane-auto-kingston",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "village-nissan-markham",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "vip-motors-brampton",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "volkswagen-downtown-toronto-toronto",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "wallace-chevrolet-milton",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "wally-s-3bay-auto-sales-ontario",
+    "reason": "unsupported platform: unknown"
+  },
+  {
+    "dealer_id": "waterloo-kia-ontario",
+    "reason": "unsupported platform: d2cmedia"
+  },
+  {
+    "dealer_id": "wendell-motors-kitchener",
+    "reason": "Client error '404 Not Found' for url 'https://www.kitchenerjeepram.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "weston-motors-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "whitby-mazda-ontario",
+    "reason": "unsupported platform: autosync"
+  },
+  {
+    "dealer_id": "whitby-oshawa-honda-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "whitby-subaru-whitby",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "whitby-toyota-whitby",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "wills-chevrolet-buick-gmc-grimsby",
+    "reason": "Client error '404 Not Found' for url 'https://www.grimsbychev.com/en/used-inventory/api/listing'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"
+  },
+  {
+    "dealer_id": "winegard-ford-lincoln-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "woodchester-nissan-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "yorkdale-dufferin-mazda-ontario",
+    "reason": "adapter returned no evidenced listings"
+  },
+  {
+    "dealer_id": "your-car-4-cash-mississauga",
+    "reason": "adapter returned no evidenced listings"
+  }
+]

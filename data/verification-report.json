@@ -1,0 +1,15 @@
+{
+  "broken": 30,
+  "checked": 100,
+  "platforms": {
+    "autosync": 8,
+    "d2cmedia": 7,
+    "dealercity": 23,
+    "html-inventory": 3,
+    "schemaorg-jsonld": 13,
+    "strathcom": 3,
+    "unknown": 43
+  },
+  "restricted": 1,
+  "verified": 68
+}
