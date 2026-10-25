@@ -28,6 +28,15 @@ class Dealer:
     robots_allows_general: bool | None = None
     last_checked_at: str | None = None
     notes: str = ""
+    canonical_domain: str | None = None
+    province: str = "ON"
+    address: str | None = None
+    postal_code: str | None = None
+    latitude: float | None = None
+    longitude: float | None = None
+    last_success_at: str | None = None
+    failure_count: int = 0
+    last_error: str | None = None
 
 
 class DealerRegistry:
@@ -43,27 +52,50 @@ class DealerRegistry:
                 platform TEXT, robots_url TEXT, robots_allows_general INTEGER,
                 last_checked_at TEXT, notes TEXT NOT NULL)"""
             )
+            columns = {row[1] for row in connection.execute("PRAGMA table_info(dealers)")}
+            migrations = {
+                "canonical_domain": "TEXT", "province": "TEXT NOT NULL DEFAULT 'ON'",
+                "address": "TEXT", "postal_code": "TEXT", "latitude": "REAL",
+                "longitude": "REAL", "last_success_at": "TEXT",
+                "failure_count": "INTEGER NOT NULL DEFAULT 0", "last_error": "TEXT",
+            }
+            for name, definition in migrations.items():
+                if name not in columns:
+                    connection.execute(f"ALTER TABLE dealers ADD COLUMN {name} {definition}")
 
     def upsert(self, dealer: Dealer) -> None:
         fields = asdict(dealer)
         with sqlite3.connect(self.database) as connection:
             connection.execute(
-                """INSERT INTO dealers VALUES (:dealer_id,:name,:municipality,:website_url,
+                """INSERT INTO dealers (dealer_id,name,municipality,website_url,inventory_url,
+                discovery_source_url,adapter_key,status,platform,robots_url,
+                robots_allows_general,last_checked_at,notes,canonical_domain,province,address,
+                postal_code,latitude,longitude,last_success_at,failure_count,last_error)
+                VALUES (:dealer_id,:name,:municipality,:website_url,
                 :inventory_url,:discovery_source_url,:adapter_key,:status,:platform,:robots_url,
-                :robots_allows_general,:last_checked_at,:notes)
+                :robots_allows_general,:last_checked_at,:notes,:canonical_domain,:province,:address,
+                :postal_code,:latitude,:longitude,:last_success_at,:failure_count,:last_error)
                 ON CONFLICT(dealer_id) DO UPDATE SET
                 name=excluded.name, municipality=excluded.municipality,
                 website_url=excluded.website_url, inventory_url=excluded.inventory_url,
                 discovery_source_url=excluded.discovery_source_url, adapter_key=excluded.adapter_key,
                 status=excluded.status, platform=excluded.platform, robots_url=excluded.robots_url,
                 robots_allows_general=excluded.robots_allows_general,
-                last_checked_at=excluded.last_checked_at, notes=excluded.notes""",
+                last_checked_at=excluded.last_checked_at, notes=excluded.notes,
+                canonical_domain=excluded.canonical_domain, province=excluded.province,
+                address=excluded.address, postal_code=excluded.postal_code,
+                latitude=excluded.latitude, longitude=excluded.longitude,
+                last_success_at=excluded.last_success_at,
+                failure_count=excluded.failure_count, last_error=excluded.last_error""",
                 fields,
             )
 
     def all(self) -> list[Dealer]:
         with sqlite3.connect(self.database) as connection:
-            rows = connection.execute("SELECT * FROM dealers ORDER BY dealer_id").fetchall()
+            rows = connection.execute("""SELECT dealer_id,name,municipality,website_url,inventory_url,
+                discovery_source_url,adapter_key,status,platform,robots_url,robots_allows_general,
+                last_checked_at,notes,canonical_domain,province,address,postal_code,latitude,longitude,
+                last_success_at,failure_count,last_error FROM dealers ORDER BY dealer_id""").fetchall()
         return [Dealer(*row) for row in rows]
 
     def export(self, output: Path) -> None:
@@ -108,10 +140,24 @@ def identify_platform(html: str) -> str:
     lowered = html.lower()
     if "typesense_host" in lowered and "zopsoftware" in lowered:
         return "zopsoftware-typesense"
+    fingerprints = {
+        "dealerinspire": ("dealerinspire", "di-inventory"),
+        "dealerspike": ("dealerspike",),
+        "dealeron": ("dealeron.com", "dealeron.js"),
+        "strathcom": ("strathcom", "smedia"),
+        "autosync": ("convertus", "autosync"),
+        "d2cmedia": ("d2cmedia",),
+        "dealercity": ("dealercity",),
+    }
+    for platform, markers in fingerprints.items():
+        if any(marker in lowered for marker in markers):
+            return platform
     if "wp-content" in lowered:
         return "schemaorg-jsonld" if 'application/ld+json' in lowered else "wordpress"
     if 'application/ld+json' in lowered and any(marker in lowered for marker in ('"vehicle"', '"car"', '"product"')):
         return "schemaorg-jsonld"
+    if any(marker in lowered for marker in ("data-vin=", "vehicle-card", "inventory-item", "vehicle-listing")):
+        return "html-inventory"
     return "unknown"
 
 
